@@ -1,0 +1,43 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title text-center">Song</h4>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <form #songForm="ngForm" (ngSubmit)="searchSong(songForm)">
+              <div class="form-group">
+                <input type="text" name="search" #name="ngModel" [(ngModel)]="song.search"  class="form-control" placeholder="Magic/Rude">
+              </div>
+              <div class="form-group">
+                <button class="btn btn-outline-success">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row py-2">
+      <div class="col-12">
+        <div class="card-deck">
+          <div class="col-lg-4 col-md-4 col-sm-6 col-12 py-2" *ngFor="let song of songs">
+            <div class="card" >
+              <img class="card-img" src="{{song.album.cover_big}}" alt="Card image">
+              <div class="card-body">
+                <h5 class="card-title">{{song.album.title}}</h5>
+                <p class="card-text">{{song.artist.name}} - {{song.title}}</p>
+                <div class="row">
+                  <audio controls class="col-12">
+                    <source src="{{song.preview}}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                  </audio>
+                </div>
+                <a href="{{song.link}}" class="card-link" target="_blank">Listen on deezer</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
